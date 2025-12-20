@@ -22,6 +22,7 @@ const config: Config = {
     'src/data/repositories/**/*.ts',
     'src/domain/use-cases/**/*.ts',
     'src/app/components/**/*.tsx',
+    'src/presentation/actions/**/*.ts',
   ],
   coverageThreshold: {
     global: {
