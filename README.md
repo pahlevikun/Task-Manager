@@ -316,7 +316,7 @@ graph TD
     subgraph Presentation ["Presentation Layer"]
         UI["React Components"]
         Actions["Server Actions"]
-        ClientServices["Client Services (ViewModels)"]
+        ClientServices["Client Services"]
     end
 
     subgraph Domain ["Domain Layer"]
