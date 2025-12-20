@@ -1,5 +1,6 @@
 {
   "common": {
+    "all": "All",
     "logout": "Logout",
     "appName": "Task Manager",
     "cancel": "Cancel",
@@ -27,6 +28,7 @@
     }
   },
   "task": {
+    "mytask": "My Task",
     "new": "New Task",
     "edit": "Edit Task",
     "title": "Title",
