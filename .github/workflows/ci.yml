@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: taskmanager
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+    - name: Install dependencies
+      run: make install
+    - name: Run Linter
+      run: make lint
+    - name: Run Tests
+      env:
+        DATABASE_URL: postgres://user:password@localhost:5432/taskmanager
+        JWT_SECRET: supersecret_dev_key_12345
+        JWT_PASSWORD_ALGORITHM: HS256
+        JWT_EXPIRATION_DURATION: 24h
+        COOKIE_LIVE_DURATION: 86400
+        PASSWORD_SALT_ROUNDS: 10
+        DB_MAX_CONNECTIONS: 20
+        DB_IDLE_TIMEOUT: 30000
+        DB_CONNECTION_TIMEOUT: 2000
+      run: make test
+    - name: Build
+      run: make build
