@@ -436,3 +436,6 @@ docker run -p 3000:3000 \
 ## Application Walkthrough
 
 Screenshot of the application provided in the [screenshot directory](./screenshot).
+
+Test coverage as of this project 20 December 2025.
+![Coverage](./screenshot/test-coverage.png)
