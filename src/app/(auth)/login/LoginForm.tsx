@@ -2,6 +2,7 @@
 
 import { loginAction } from '@/presentation/actions/auth';
 import { useActionState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const initialState = {
   error: '',
@@ -9,6 +10,7 @@ const initialState = {
 
 export default function LoginForm() {
   const [state, formAction, isPending] = useActionState(loginAction, initialState);
+  const { t } = useTranslation();
 
   return (
     <form className="mt-8 space-y-6" action={formAction}>
@@ -16,7 +18,7 @@ export default function LoginForm() {
       <div className="space-y-4">
         <div>
           <label htmlFor="email-address" className="sr-only">
-            Email address
+            {t('auth.login.email')}
           </label>
           <input
             id="email-address"
@@ -30,7 +32,7 @@ export default function LoginForm() {
         </div>
         <div>
           <label htmlFor="password" className="sr-only">
-            Password
+            {t('auth.login.password')}
           </label>
           <input
             id="password"
@@ -56,7 +58,7 @@ export default function LoginForm() {
           disabled={isPending}
           className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 shadow-lg shadow-indigo-500/20 transition-all duration-300 transform hover:-translate-y-1"
         >
-          {isPending ? 'Signing in...' : 'Sign in'}
+          {isPending ? t('auth.login.cta_loading') : t('auth.login.cta_sign_in')}
         </button>
       </div>
     </form>

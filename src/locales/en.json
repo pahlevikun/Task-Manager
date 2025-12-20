@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "login": {
+      "sign_in": "Sign in to your account",
+      "sign_up": "create a new account",
+      "email": "Email address",
+      "password": "Password",
+      "cta_sign_in": "Sign In",
+      "cta_loading": "Signing In..."
+    },
+    "register": {
+      "sign_up": "Create your account",
+      "sign_in": "Already have an account?",
+      "sign_in_cta": "Sign in",
+      "email": "Email address",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "cta_sign_up": "Sign Up",
+      "cta_loading": "Creating account..."
+    }
+  }
+}
