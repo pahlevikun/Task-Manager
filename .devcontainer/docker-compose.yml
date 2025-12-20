@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspace:cached
+    command: sleep infinity
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgres://admin:password@postgres:5432/task_manager
+      - JWT_SECRET=supersecret_dev_key_12345
