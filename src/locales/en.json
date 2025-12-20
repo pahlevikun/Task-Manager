@@ -1,4 +1,11 @@
 {
+  "common": {
+    "logout": "Logout",
+    "appName": "Task Manager",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
   "auth": {
     "login": {
       "sign_in": "Sign in to your account",
@@ -18,5 +25,31 @@
       "cta_sign_up": "Sign Up",
       "cta_loading": "Creating account..."
     }
+  },
+  "task": {
+    "new": "New Task",
+    "edit": "Edit Task",
+    "title": "Title",
+    "title_placeholder": "What needs to be done?",
+    "description": "Description",
+    "description_placeholder": "Add some details...",
+    "no_description": "No description",
+    "due_date": "Due Date",
+    "select_date": "Select date",
+    "time": "Time",
+    "status": "Status",
+    "todo": "To Do",
+    "inProgress": "In Progress",
+    "done": "Done",
+    "add": "Add Task",
+    "update": "Update Task",
+    "future_date": "Must be in the future",
+    "created": "Task created successfully",
+    "updated": "Task updated successfully",
+    "delete_title": "Delete Task",
+    "delete_confirm": "Are you sure you want to delete \"{title}\"? This action cannot be undone.",
+    "delete_button": "Delete",
+    "deleting": "Deleting...",
+    "emptyList": "No tasks found. Create one to get started!"
   }
 }

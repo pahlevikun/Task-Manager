@@ -1,13 +1,13 @@
 import { createContainer, asClass, InjectionMode } from "awilix";
-import { UserRepositoryImpl } from "../data/repositories/UserRepositoryImpl";
-import { TaskRepositoryImpl } from "../data/repositories/TaskRepositoryImpl";
-import { RegisterUseCase } from "../domain/use-cases/auth/RegisterUseCase";
-import { LoginUseCase } from "../domain/use-cases/auth/LoginUseCase";
-import { CreateTaskUseCase } from "../domain/use-cases/task/CreateTaskUseCase";
-import { GetTasksUseCase } from "../domain/use-cases/task/GetTasksUseCase";
-import { UpdateTaskUseCase } from "../domain/use-cases/task/UpdateTaskUseCase";
-import { DeleteTaskUseCase } from "../domain/use-cases/task/DeleteTaskUseCase";
-import { GetTaskByIdUseCase } from "../domain/use-cases/task/GetTaskByIdUseCase";
+import { UserRepositoryImpl } from "../../data/repositories/UserRepositoryImpl";
+import { TaskRepositoryImpl } from "../../data/repositories/TaskRepositoryImpl";
+import { RegisterUseCase } from "../../domain/use-cases/auth/RegisterUseCase";
+import { LoginUseCase } from "../../domain/use-cases/auth/LoginUseCase";
+import { CreateTaskUseCase } from "../../domain/use-cases/task/CreateTaskUseCase";
+import { GetTasksUseCase } from "../../domain/use-cases/task/GetTasksUseCase";
+import { UpdateTaskUseCase } from "../../domain/use-cases/task/UpdateTaskUseCase";
+import { DeleteTaskUseCase } from "../../domain/use-cases/task/DeleteTaskUseCase";
+import { GetTaskByIdUseCase } from "../../domain/use-cases/task/GetTaskByIdUseCase";
 
 const serverContainer = createContainer({
   injectionMode: InjectionMode.CLASSIC,

@@ -3,11 +3,11 @@ import {
   loginAction,
   logoutAction,
 } from "@/presentation/actions/auth";
-import { serverContainer } from "@/services/server_container";
+import { serverContainer } from "@/services/server/server_container";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-jest.mock("@/services/server_container", () => ({
+jest.mock("@/services/server/server_container", () => ({
   serverContainer: {
     resolve: jest.fn(),
   },

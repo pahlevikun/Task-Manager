@@ -5,17 +5,17 @@ import {
   getTaskById, 
   getTasks 
 } from '@/presentation/actions/task';
-import { serverContainer } from '@/services/server_container';
+import { serverContainer } from '@/services/server/server_container';
 import { revalidatePath } from 'next/cache';
-import { getUserId } from '@/services/auth';
+import { getUserId } from '@/services/server/auth';
 
-jest.mock('@/services/server_container', () => ({
+jest.mock('@/services/server/server_container', () => ({
   serverContainer: {
     resolve: jest.fn(),
   },
 }));
 
-jest.mock('@/services/auth', () => ({
+jest.mock('@/services/server/auth', () => ({
   getUserId: jest.fn(),
 }));
 

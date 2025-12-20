@@ -1,7 +1,7 @@
 "use server";
 
-import { serverContainer } from "@/services/server_container";
-import { getUserId } from "@/services/auth";
+import { serverContainer } from "@/services/server/server_container";
+import { getUserId } from "@/services/server/auth";
 import { revalidatePath } from "next/cache";
 import { Task, TaskStatus } from "@/domain/entities/Task";
 import { z } from "zod";
