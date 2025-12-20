@@ -1,5 +1,5 @@
 import { ITaskRepository } from "../../domain/repositories/ITaskRepository";
-import { Task } from "../../domain/entities/Task";
+import { Task, TaskStatus } from "../../domain/entities/Task";
 import { db } from "../db";
 
 export class TaskRepositoryImpl implements ITaskRepository {
@@ -73,6 +73,20 @@ export class TaskRepositoryImpl implements ITaskRepository {
       ORDER BY created_at DESC
     `;
     const result = await db.query(query, [userId]);
+    return result.rows;
+  }
+
+  async findByUserIdAndStatus(
+    userId: string,
+    status: TaskStatus
+  ): Promise<Task[]> {
+    const query = `
+      SELECT id, title, description, status, due_date as "dueDate", user_id as "userId", created_at as "createdAt", updated_at as "updatedAt"
+      FROM tasks
+      WHERE user_id = $1 AND status = $2
+      ORDER BY created_at DESC
+    `;
+    const result = await db.query(query, [userId, status]);
     return result.rows;
   }
 }

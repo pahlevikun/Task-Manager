@@ -1,4 +1,4 @@
-import { Task } from "../entities/Task";
+import { Task, TaskStatus } from "../entities/Task";
 
 export interface ITaskRepository {
   create(task: Omit<Task, "id" | "createdAt" | "updatedAt">): Promise<Task>;
@@ -9,4 +9,5 @@ export interface ITaskRepository {
   delete(id: string): Promise<boolean>;
   findById(id: string): Promise<Task | null>;
   findByUserId(userId: string): Promise<Task[]>;
+  findByUserIdAndStatus(userId: string, status: TaskStatus): Promise<Task[]>;
 }

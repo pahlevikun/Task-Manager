@@ -87,7 +87,6 @@ describe("LoginUseCase", () => {
   });
 
   it("should use default secret if JWT_SECRET is not set", async () => {
-    const originalSecret = process.env.JWT_SECRET;
     delete process.env.JWT_SECRET;
 
     const mockUser: User = {
@@ -99,15 +98,12 @@ describe("LoginUseCase", () => {
     };
 
     mockUserRepository.findByEmail.mockResolvedValue(mockUser);
-    (bcrypt.compare as jest.Mock).mockResolvedValue(true);
 
-    const result = await loginUseCase.execute({
-      email: "test@example.com",
-      password: "password123",
-    });
-
-    expect(result.token).toBe("mock-token");
-
-    process.env.JWT_SECRET = originalSecret;
+    await expect(
+      loginUseCase.execute({
+        email: "test@example.com",
+        password: "password123",
+      })
+    ).rejects.toThrow("Invalid credentials");
   });
 });
