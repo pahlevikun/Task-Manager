@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Task Manager Internal API
+  version: 1.0.0
+  description: Internal API endpoints for system management and monitoring.
+paths:
+  /api/status:
+    get:
+      summary: System Health Check
+      description: |
+        Checks the operational status of the application and its dependencies (Database) for liveness/readiness purposes.
+        
+        **Access Control:**
+        This endpoint is restricted to internal access only (Docker/Pod network).
+        Need to setup one the API gateway/load balance so requests from public IP addresses will be rejected.
+      tags:
+        - Monitoring
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  timestamp:
+                    type: string
+                    format: date-time
+                  server:
+                    type: object
+                    properties:
+                      uptime:
+                        type: number
+                      status:
+                        type: string
+                        example: running
+                  services:
+                    type: object
+                    properties:
+                      database:
+                        type: string
+                        example: connected
+        '403':
+          description: Forbidden - Request originated from an external/public source
+        '503':
+          description: Service Unavailable - Database or other critical dependency is down
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  services:
+                    type: object
+                    properties:
+                      database:
+                        type: string
+                        example: disconnected
