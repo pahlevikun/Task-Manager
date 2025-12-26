@@ -34,6 +34,63 @@ A simple Task Manager (TODO app) project built with Next.js, TypeScript, Tailwin
 - **DI**: Awilix
 - **Testing**: Jest
 
+## Project Initialization
+
+### Step 1
+
+```bash
+npx create-next-app@latest task_manager --typescript --tailwind --eslint --src-dir --import-alias "@/*" --app --no-turbopack --use-npm
+npm install awilix zod pg bcryptjs jose clsx tailwind-merge lucide-react
+npm install -D @types/pg @types/bcryptjs jest ts-jest @types/jest @testing-library/react @testing-library/dom @testing-library/jest-dom jest-environment-jsdom ts-node dotenv
+```
+
+## Project Structure
+
+```
+src/
+├── __tests__/                      # Tests directory
+│   └── unit/                       # Unit tests for different layers
+│       ├── app/                    # Presentation layer tests (Components, API)
+│       ├── data/                   # Data layer tests (Repositories)
+│       ├── domain/                 # Domain layer tests (Use Cases)
+│       └── presentation/           # Presentation logic tests (Actions)
+├── app/                            # Next.js App Router (Presentation Layer)
+│   ├── (auth)/                     # Authentication Routes
+│   │   ├── login/                  # Login Page
+│   │   └── register/               # Register Page
+│   ├── api/                        # API Routes
+│   │   └── status/                 # Health check endpoint
+│   ├── components/                 # Reusable UI Components
+│   │   ├── Navbar.tsx              # Navigation bar
+│   │   ├── TaskCard.tsx            # Task item component
+│   │   └── TaskForm.tsx            # Form for creating/editing tasks
+│   ├── tasks/                      # Task Feature Routes
+│   │   ├── [taskId]/               # Task Detail Routes
+│   │   │   ├── edit/               # Edit Task Page
+│   │   │   └── page.tsx            # Task Details Page
+│   │   └── page.tsx                # Task List Page
+│   ├── globals.css                 # Global Styles (Tailwind CSS)
+│   ├── layout.tsx                  # Root Layout
+│   └── page.tsx                    # Home/Landing Page
+├── data/                           # Data Layer
+│   ├── db/                         # Database Configuration
+│   └── repositories/               # Repository Implementations
+│       ├── TaskRepositoryImpl.ts   # Task Repository Implementation
+│       └── UserRepositoryImpl.ts   # User Repository Implementation
+├── domain/                         # Domain Layer (Pure Business Logic)
+│   ├── entities/                   # Domain Entities (Task, User)
+│   ├── repositories/               # Repository Interfaces
+│   └── use-cases/                  # Application Business Rules
+│       ├── auth/                   # Authentication Use Cases
+│       └── task/                   # Task Management Use Cases
+├── presentation/                   # Presentation Logic (State Management)
+│   ├── actions/                    # Server Actions (Next.js)
+│   └── context/                    # React Context (Client State)
+└── services/                       # Dependency Injection (Awilix)
+    ├── client/                     # Client-side DI Container
+    └── server/                     # Server-side DI Container
+```
+
 ## Getting Started
 
 There's two ways to run this project: using a **DevContainer** (recommended for a consistent environment) or **Locally** with Docker Compose.
